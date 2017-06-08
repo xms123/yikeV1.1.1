@@ -11,41 +11,16 @@
 	<div class="viewport" >
 		<!-- 侧边导航 -->
 		<div ng-class="{navs:true,collapse:collapsed}">
-			<dl>
+			<dl ng-controller="NavContr">
 				<dt class="login">
 					<div class="avatar">
 						<img src="./public/images/avatar.png" alt="">
 					</div>
 					<span>登录</span>
 				</dt>
-				<dd class="active">
-					<a href="#/day" class="icon-home">
-						<span>今日一刻</span>
-					</a>
-				</dd>
-				<dd>
-					<a href="./older.html" class="icon-file-empty">
-						<span>往期内容</span>
-					</a>
-				</dd>
-				<dd>
-					<a href="./author.html" class="icon-pencil">
-						<span>热门作者</span>
-					</a>
-				</dd>
-				<dd>
-					<a href="./category.html" class="icon-menu">
-						<span>栏目浏览</span>
-					</a>
-				</dd>
-				<dd>
-					<a href="./favourite.html" class="icon-heart">
-						<span>我的喜欢</span>
-					</a>
-				</dd>
-				<dd>
-					<a href="./settings.html" class="icon-cog">
-						<span>设置</span>
+				<dd ng-class="{active:key==0}" ng-repeat="(key,nav) in navs">
+					<a href="{{nav.link}}" class="{{nav.icon}}">
+						<span>{{nav.text}}</span>
 					</a>
 				</dd>
 			</dl>
@@ -85,5 +60,6 @@
 	<!-- <script src="./public/libs/toggle.js"></script> 不用以前的js，用angularjs-->
 	<script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
 	<script type="text/javascript" src="./scripts/app.js"></script>
+	<script type="text/javascript" src="scripts/controllers.js"></script>
 </body>
 </html>
